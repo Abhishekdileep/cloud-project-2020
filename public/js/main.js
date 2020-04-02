@@ -2,7 +2,8 @@
 const chatFrom = document.getElementById('chat-form');
 const chatMessage = document.querySelector('.chat-messages');
 const socket = io();  
-
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
 //getting the User name and room from the URL 
 const { username , room } = Qs.parse(location.search , {
     ignoreQueryPrefix : true
@@ -10,7 +11,11 @@ const { username , room } = Qs.parse(location.search , {
 
 //Join chatroom 
 socket.emit('joinRoom' , { username , room });
-
+//Get Room and Users
+socket.on('roomUsers' , ({room , users })=> {
+    outputRoomName(room);
+    outputUser(users)
+})
 
 // Message From server
 socket.on('message' , message => {
@@ -41,4 +46,9 @@ function outputMessage(message) {
     </p>`
     document.querySelector('.chat-messages').appendChild(div);
     chatMessage.scrollTop = chatMessage.scrollHeight;
+}
+
+//Add Room Name to your dom
+function outputRoomName(room) {
+    const div = dom.createElement()
 }
