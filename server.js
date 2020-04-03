@@ -70,6 +70,10 @@ io.on('connection', socket => {
   });
 });
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3001;
+=======
+const PORT = process.env.PORT || 3000;
+>>>>>>> 65013f7de04d05c6df32f67a191a8668061be289
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
