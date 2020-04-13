@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
+const cassandra = require('./config/cassandra/index');
 const {
   userJoin,
   getCurrentUser,

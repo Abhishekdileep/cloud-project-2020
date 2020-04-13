@@ -1,7 +1,7 @@
 const cassandra = require('cassandra-driver');
  
 const client = new cassandra.Client({
-  cloud: { secureConnectBundle: './secure-connect-test-db.zip' },
+  cloud: { secureConnectBundle: './config/cassandra/secure-connect-test-db.zip' },
   keyspace: 'packt',
   credentials : {
         username : 'abhishekdileep99' ,
@@ -9,5 +9,7 @@ const client = new cassandra.Client({
     }
 });
  
-const cassandra = await client.connect();
-module.exports = cassandra;
+ client.connect().then(()=> {
+  console.log('Connected to  Cassandra ')
+});
+module.exports = client;
